@@ -23,7 +23,7 @@ func main() {
 
 	routes := mux.NewRouter()
 	routes.HandleFunc("/api/product/findall", product_api.FindAll).Methods("GET")
-	routes.HandleFunc("/api/user/create", user_api.Create).Methods("GET")
+	routes.HandleFunc("/api/user/create", user_api.Create).Methods("POST")
 	routes.HandleFunc("/api/user", user_api.Index).Methods("GET")
 
 	srv := &http.Server{
