@@ -1,18 +1,21 @@
 package config
 
 import (
+	"fmt"
+	"go-crud/entities"
+
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
-func Connect() {
-	db := gorm.Open("mysql", "user:password@/dbname?charset=utf8&parseTime=True&loc=Local")
-	defer db.Close()
+func Connect() (*gorm.DB, error) {
+	db, err := gorm.Open("postgres", "host=db user=postgres DB.name=go_crud_dev password=postgres sslmode=disable")
+	db.AutoMigrate(&entities.User{})
+	fmt.Println(db)
 
-	// if err != nil {
-	// 	return nil, err
-	// } else {
-	// 	db := session.DB(dbName)
-	// 	return db, nil
-	// }
+	if err != nil {
+		return nil, err
+	} else {
+		return db, nil
+	}
 }

@@ -1,20 +1,22 @@
 package product_api
 
-import "net/http"
+import (
+	"go-crud/config"
+	"net/http"
+)
 
 // import (
 // 	"encoding/json"
 // 	"fmt"
 // 	"net/http"
 
-// 	"go-crud/config"
 // 	"go-crud/models"
 // )
 
 func FindAll(response http.ResponseWriter, request *http.Request) {
 	// 	fmt.Println("We are here")
 
-	// 	db, err := config.Connect()
+	config.Connect()
 
 	// 	if err != nil {
 	// 		respondWithError(response, http.StatusBadRequest, err.Error())

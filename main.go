@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"go-crud/api/product_api"
+	"go-crud/api/user_api"
 
 	"github.com/gorilla/mux"
 )
@@ -22,6 +23,8 @@ func main() {
 
 	routes := mux.NewRouter()
 	routes.HandleFunc("/api/product/findall", product_api.FindAll).Methods("GET")
+	routes.HandleFunc("/api/user/create", user_api.Create).Methods("GET")
+	routes.HandleFunc("/api/user", user_api.Index).Methods("GET")
 
 	srv := &http.Server{
 		Addr:         ":8000",
