@@ -1,0 +1,18 @@
+hash: bdf5c0b43903ad8f1246f2cdfe547d87d5dcc3a4055c326109e5a2a40514e3e3
+updated: 2019-02-10T20:54:02.767298565Z
+imports:
+- name: github.com/go-sql-driver/mysql
+  version: 1b9eda25029c206f36637dde8e2acad26df99dab
+- name: github.com/gorilla/mux
+  version: a7962380ca08b5a188038c69871b8d3fbdf31e89
+- name: github.com/jinzhu/gorm
+  version: 906799fef2f895116d915e1793314ab9053b400d
+  subpackages:
+  - dialects/mysql
+- name: github.com/jinzhu/inflection
+  version: 04140366298a54a039076d798123ffa108fff46c
+- name: google.golang.org/appengine
+  version: 99bc4335fe23898c0a61f5b35afabb6d11f29094
+  subpackages:
+  - cloudsql
+testImports: []

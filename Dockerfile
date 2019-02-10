@@ -1,11 +1,19 @@
-FROM golang
+FROM golang:alpine
 
-WORKDIR /go-crud
+RUN apk add --update tzdata \
+    bash wget curl git;
 
-RUN GO111MODULE=on go build -mod=vendor -o go-crud
+RUN mkdir -p $GOPATH/bin && \
+    curl https://glide.sh/get | sh && \
+    go get github.com/pilu/fresh
 
+WORKDIR /go/src/go-crud
 COPY . ./
 
-# Building using -mod=vendor, which will utilize the v
+RUN GO111MODULE=on go mod vendor
+RUN go build
 
-CMD ["./go-crud"]
+COPY . ./
+EXPOSE 8000
+
+CMD glide update && fresh -c runner.conf main.go
