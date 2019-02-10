@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  app:
+    container_name: go-crud
+    image: golang
+    # build: .
+    volumes:
+      - .:/go/src/go-crud
+    working_dir: /go/src/go-crud
+    command: bash -c "GO111MODULE=on go mod vendor && go build && ./go-crud"
+    ports:
+      - "8000:8000"
+
+  db:
+    image: postgres
