@@ -23,6 +23,17 @@ func Index(response http.ResponseWriter, request *http.Request) {
 	utils.RespondWithJson(response, http.StatusOK, users)
 }
 
+func Login(response http.ResponseWriter, request *http.Request) {
+	db, err := config.Connect()
+	defer db.Close()
+
+	if err != nil {
+		utils.RespondWithError(response, http.StatusBadRequest, err.Error())
+		return
+	}
+
+}
+
 func Create(response http.ResponseWriter, request *http.Request) {
 	var user entities.User
 	decoder := json.NewDecoder(request.Body)
